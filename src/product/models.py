@@ -12,6 +12,8 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     sku = models.SlugField(max_length=255)
     description = models.TextField()
+    
+    
 
 
 class ProductImage(models.Model):

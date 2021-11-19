@@ -26,6 +26,9 @@ CREATE TABLE `auth_group` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+
+
+
 DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE `auth_group_permissions` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -38,6 +41,9 @@ CREATE TABLE `auth_group_permissions` (
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+
+
+
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE `auth_permission` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -48,6 +54,9 @@ CREATE TABLE `auth_permission` (
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3;
+
+
+
 
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user` (
@@ -66,6 +75,9 @@ CREATE TABLE `auth_user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
+
+
+
 DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -78,6 +90,8 @@ CREATE TABLE `auth_user_groups` (
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+
+
 DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE `auth_user_user_permissions` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -89,6 +103,8 @@ CREATE TABLE `auth_user_user_permissions` (
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+
 
 DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE `django_admin_log` (
@@ -108,6 +124,8 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+
+
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -116,6 +134,9 @@ CREATE TABLE `django_content_type` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+
+
+
 
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE `django_migrations` (
@@ -126,6 +147,9 @@ CREATE TABLE `django_migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 
+
+
+
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE `django_session` (
   `session_key` varchar(40) NOT NULL,
@@ -134,6 +158,8 @@ CREATE TABLE `django_session` (
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+
 
 DROP TABLE IF EXISTS `product_product`;
 CREATE TABLE `product_product` (
@@ -145,6 +171,9 @@ CREATE TABLE `product_product` (
   KEY `product_product_sku_9b46bb72` (`sku`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 
+
+
+
 DROP TABLE IF EXISTS `product_productimage`;
 CREATE TABLE `product_productimage` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -154,6 +183,8 @@ CREATE TABLE `product_productimage` (
   KEY `product_productimage_product_id_544084bb_fk_product_product_id` (`product_id`),
   CONSTRAINT `product_productimage_product_id_544084bb_fk_product_product_id` FOREIGN KEY (`product_id`) REFERENCES `product_product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+
 
 DROP TABLE IF EXISTS `product_productvariant`;
 CREATE TABLE `product_productvariant` (
@@ -167,6 +198,8 @@ CREATE TABLE `product_productvariant` (
   CONSTRAINT `product_productvariant_product_id_43c5a310_fk_product_product_id` FOREIGN KEY (`product_id`) REFERENCES `product_product` (`id`),
   CONSTRAINT `product_productvariant_variant_id_517fe584_fk_product_variant_id` FOREIGN KEY (`variant_id`) REFERENCES `product_variant` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb3;
+
+
 
 DROP TABLE IF EXISTS `product_productvariantprice`;
 CREATE TABLE `product_productvariantprice` (
@@ -188,6 +221,8 @@ CREATE TABLE `product_productvariantprice` (
   CONSTRAINT `product_productvaria_product_variant_two__7949a6f9_fk_product_p` FOREIGN KEY (`product_variant_two_id`) REFERENCES `product_productvariant` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb3;
 
+
+
 DROP TABLE IF EXISTS `product_variant`;
 CREATE TABLE `product_variant` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -196,6 +231,10 @@ CREATE TABLE `product_variant` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+
+
+
+
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 (1, 'Can add log entry', 1, 'add_logentry'),
@@ -243,8 +282,13 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (43, 'Can delete product image', 11, 'delete_productimage'),
 (44, 'Can view product image', 11, 'view_productimage');
 
+
+
+
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
 (1, 'pbkdf2_sha256$260000$wJpcrXlJH77bU9155Yq3PI$vLIYNlaDf9oE+cu56ql8O79IWNGm1weyOApmEGRn4Qc=', '2021-11-16 15:26:36.389637', 1, 'rifat', '', '', '', 1, 1, '2021-11-16 11:18:16.318888');
+
+
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (1, 'admin', 'logentry'),
@@ -258,6 +302,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (9, 'product', 'productvariant'),
 (10, 'product', 'productvariantprice'),
 (11, 'product', 'productimage');
+
+
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (1, 'contenttypes', '0001_initial', '2021-11-16 11:16:32.188806'),
@@ -283,11 +329,16 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (21, 'sessions', '0001_initial', '2021-11-16 11:16:33.827528'),
 (22, 'product', '0004_auto_20211116_1512', '2021-11-16 15:12:36.402784');
 
+
+
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('007pyg84vpa73y6i97dwfjjktjbvxue2', '.eJxVjEEOwiAQRe_C2pCBju3UpXvPQIAZpGogKe3KeHfbpAvd_vfefyvn1yW7tcnsJlYXZdTpdws-PqXsgB--3KuOtSzzFPSu6IM2fassr-vh_h1k3_JWR8YIQwIvYsLZGmIkQ8ISAEjACsSeOgyQfBfMOOJgETapT4RIIOrzBe-TN5Y:1mn0Be:p7pQp4O4afNf3WDLcf9XXmSH1BzTketG2LCAXa-r4oM', '2021-11-30 15:15:54.543203'),
 ('b7gxsp85il3wui7hd52gfaxydifcp73f', '.eJxVjEEOwiAQRe_C2pCBju3UpXvPQIAZpGogKe3KeHfbpAvd_vfefyvn1yW7tcnsJlYXZdTpdws-PqXsgB--3KuOtSzzFPSu6IM2fassr-vh_h1k3_JWR8YIQwIvYsLZGmIkQ8ISAEjACsSeOgyQfBfMOOJgETapT4RIIOrzBe-TN5Y:1mmwTw:izlOSY4cbooLVCPxmKoME2A2IsfA4KZ3QGq5F7CrE-8', '2021-11-30 11:18:32.331986'),
 ('nay27x7ls8vow8dbmuzcqo8cp1mlghcf', '.eJxVjEEOwiAQRe_C2pCBju3UpXvPQIAZpGogKe3KeHfbpAvd_vfefyvn1yW7tcnsJlYXZdTpdws-PqXsgB--3KuOtSzzFPSu6IM2fassr-vh_h1k3_JWR8YIQwIvYsLZGmIkQ8ISAEjACsSeOgyQfBfMOOJgETapT4RIIOrzBe-TN5Y:1mn0M0:foiZT-5qcClgdRDPZtR1QeKgqMffKmnZDdSbDJjD5uw', '2021-11-30 15:26:36.391823'),
 ('zao25uixtauyl0dgwl3aa232daeuxqri', '.eJxVjEEOwiAQRe_C2pCBju3UpXvPQIAZpGogKe3KeHfbpAvd_vfefyvn1yW7tcnsJlYXZdTpdws-PqXsgB--3KuOtSzzFPSu6IM2fassr-vh_h1k3_JWR8YIQwIvYsLZGmIkQ8ISAEjACsSeOgyQfBfMOOJgETapT4RIIOrzBe-TN5Y:1mn0GK:W_WHTY3GtO7iCfpRszU0KW_AaHj9TPi2KorI5WiVgdk', '2021-11-30 15:20:44.827544');
+
+
+
 
 INSERT INTO `product_product` (`id`, `title`, `sku`, `description`) VALUES
 (1, 'White Short Sleeve Pure Cotton Round Neck T-Shirt for Men', 'i100572279-s1014529290', 'Product details of White Short Sleeve Pure Cotton Round Neck T-Shirt for Men'),
@@ -309,6 +360,9 @@ INSERT INTO `product_product` (`id`, `title`, `sku`, `description`) VALUES
 (17, 'Bengal Tulip Coffee Mug 74210- Dark Brown', 'l816382-i816382', 'Combo of 2\nFood-grade\nTop quality'),
 (18, 'Bengal Picnic Jug With Tea Cup 4 pcs Set 73109-11', 'l81631-i10593', '1. Colorful design\n2. Superior quality'),
 (19, '10. Sports Bra with Long Leggings Yoga Set for Women', '190917638_BD-154564344254654ff', '88888 Sports bras can either encapsulateor compress breasts. Bras that encapsulate breasts have molded cups designed tofit around the majority of each breast. Bras that compress are designed torestrict movement by holding the breasts firmly against the body.Encapsulation-type bras are generally more effective at reducing discomfort,while compression bras may be more effective for high-intensity activities.Themost common sports bra is basically designed like a tank top with the bottomhalf cut off. Other designs use gel and water pads, silver fibres, and airbags. A stitch less bra was made by Wacoal, was molded, compressed, and shaped.A compressed bra is designed to push the breasts against the chest to reducemovement and bounce. Other bras are knitted in circular patterns, giving varyingstretch and support. A common design uses a stretchable, absorbent fabric suchas Lycra designed to reduce irritation by drawing perspiration away from theskin.Sports bras are also worn by women after certain surgical procedures. Inthose situations, a front-closing sports bra with a compression, seamless cupis recommended for healing and comfort. Certain fabrics such as Lycra have beenfound to help reduce swelling and help \"even-out\" a bust line thathas been altered by a surgical procedure.');
+
+
+
 
 INSERT INTO `product_productvariant` (`id`, `variant_id`, `product_id`, `variant_title`) VALUES
 (1, 1, 1, 'Red'),
@@ -435,6 +489,9 @@ INSERT INTO `product_productvariant` (`id`, `variant_id`, `product_id`, `variant
 (122, 2, 19, 'XLL'),
 (123, 3, 19, 'half-sleeve'),
 (124, 3, 19, 'golgola');
+
+
+
 
 INSERT INTO `product_productvariantprice` (`id`, `price`, `stock`, `product_id`, `product_variant_one_id`, `product_variant_three_id`, `product_variant_two_id`) VALUES
 (1, 120, 11, 1, 1, 7, 4),
@@ -643,10 +700,15 @@ INSERT INTO `product_productvariantprice` (`id`, `price`, `stock`, `product_id`,
 (204, 1000, 6, 19, 9, 89, 88),
 (205, 500, 6, 19, 9, 124, 88);
 
+
+
+
+
 INSERT INTO `product_variant` (`id`, `title`, `description`, `active`) VALUES
 (1, 'Color', '-', 1),
 (2, 'Size', '-', 1),
 (3, 'Style', '-', 1);
+
 
 
 

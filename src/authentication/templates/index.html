@@ -1,0 +1,15 @@
+
+{% extends 'website/base.html' %}
+
+{% block title %} Demo Index from SB-Admin {% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <!-- Outer Row -->
+        <h1 class="h1 m-3 text-white-bold d-flex justify-content-center" style="background: black;"> Hello, This is index sample page from SB-admin</h1>  
+        <div class="d-flex justify-content-center">
+            <button class="h4 m-3 text-white-bold d-flex justify-content-center" style="background: yellow;"> <a href="{% url 'dashboard' %}">Go Home </a></button>
+        </div>
+    </div>
+{% endblock %}

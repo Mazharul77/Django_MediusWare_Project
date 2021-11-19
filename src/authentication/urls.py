@@ -2,6 +2,8 @@ from django.contrib.auth import views as auth_views
 from django.template.base import kwarg_re
 from django.urls import path
 
+from . import views
+
 from authentication.forms import LoginForm
 from authentication.views import DashboardView
 
@@ -12,5 +14,6 @@ urlpatterns = [
         authentication_form=LoginForm
     ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='login.html'), name='logout'),
-    path('dashboard/', DashboardView.as_view(), name='dashboard')
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('sb-admin/', views.IndexView, name='index_sb')
 ]
